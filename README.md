@@ -23,6 +23,8 @@ Stretch Goals:
 
 ### Queues
 
+[x]
+
 - Should have the methods: `enqueue`, `dequeue`, and `len`.
   - `enqueue` should add an item to the back of the queue.
   - `dequeue` should remove and return an item from the front of the queue.

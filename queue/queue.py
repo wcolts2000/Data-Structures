@@ -5,6 +5,7 @@ class Queue:  # FIFO
         self.size = 0
         # what data structure should we
         # use to store queue elements?
+        # Utilizing a singly-linked list
 
     def enqueue(self, item):
         new_node = Node(item)
