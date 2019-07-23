@@ -9,7 +9,8 @@ class TextBuffer:
         # check if an init string is provided
         # if so, put the contents of the init string in self.contents
         if init:
-            self.contents.add_to_tail(init)
+            for char in init:
+                self.contents.add_to_tail(char)
 
     def __str__(self):
         # needs to return a string to print
@@ -23,32 +24,23 @@ class TextBuffer:
     def append(self, string_to_add):
         # print("CONTENTS: ", self.contents.head.value,
         #       "STRING TO ADD: ", string_to_add)
-        self.contents.add_to_tail(string_to_add)
+        self.join_string(string_to_add)
 
     def prepend(self, string_to_add):
         # reverse the incoming string to maintain correct
         # order when adding to the front of the text buffer
-        self.contents.add_to_head(string_to_add)
+        for char in string_to_add[::-1]:
+            self.contents.add_to_head(char)
 
     def delete_front(self, chars_to_remove):
         while chars_to_remove > 0:
-            if len(self.contents.head.value) > chars_to_remove:
-                self.contents.head.value = self.contents.tail.value[1:]
-                chars_to_remove -= 1
-            else:
-                first_set_to_remove = len(self.contents.head.value)
-                self.contents.remove_from_head()
-                return self.delete_back(chars_to_remove - first_set_to_remove)
+            self.contents.remove_from_head()
+            chars_to_remove -= 1
 
     def delete_back(self, chars_to_remove):
         while chars_to_remove > 0:
-            if len(self.contents.tail.value) > chars_to_remove:
-                self.contents.tail.value = self.contents.tail.value[:-1]
-                chars_to_remove -= 1
-            else:
-                first_set_to_remove = len(self.contents.tail.value)
-                self.contents.remove_from_tail()
-                return self.delete_back(chars_to_remove - first_set_to_remove)
+            self.contents.remove_from_tail()
+            chars_to_remove -= 1
 
     """
     Join other_buffer to self
@@ -68,7 +60,8 @@ class TextBuffer:
                 s += current.value
                 current = current.next
             # return s
-            self.contents.add_to_tail(s)
+            for char in s:
+                self.contents.add_to_tail(char)
             # other_buffer.contents.head.prev = old_tail
 
         # set self list tail's next node to be the head of the other buffer
@@ -82,15 +75,9 @@ class TextBuffer:
     # call the join method
 
     def join_string(self, string_to_join):
-        new_buffer = TextBuffer(string_to_join)
-        # while len(string_to_join) > 0:
-        #     new_buffer.add_to_tail(string_to_join[0])
-        #     print("STRING TO JOIN: ", string_to_join)
-        #     string_to_join = string_to_join[1:]
-        # for char in string_to_join:
-        # new_buffer.contents.add_to_tail(char)
-        # new_buffer.contents.add_to_tail(char)
-        self.join(new_buffer)
+        # new_buffer = TextBuffer()
+        for char in string_to_join:
+            self.contents.add_to_tail(char)
 
 
 if __name__ == '__main__':
