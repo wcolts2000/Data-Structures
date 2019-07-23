@@ -24,9 +24,9 @@ class BinarySearchTree:
         elif self.left is None and self.right is None:
             return False
         elif self.value > target:
-            return self.left.contains(target)
+            self.left.contains(target)
         elif self.value < target:
-            return self.right.contains(target)
+            self.right.contains(target)
         else:
             return False
 
