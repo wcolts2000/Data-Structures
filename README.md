@@ -52,6 +52,8 @@ Stretch Goals:
 
 ### Binary Search Trees
 
+[x]
+
 - Should have the methods `insert`, `contains`, `get_max`.
   - `insert` adds the input value to the binary search tree, adhering to the rules of the ordering of elements in a binary search tree.
   - `contains` searches the binary search tree for the input value, returning a boolean indicating whether the value exists in the tree or not.

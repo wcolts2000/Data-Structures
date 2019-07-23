@@ -125,6 +125,15 @@ class DoublyLinkedList:
                 self.head.next.value = temp
                 count += 1
         return self.head.value
+        # if node is self.head:
+        #     return
+
+        # if node is self.tail:
+        #     self.remove_from_tail()
+        # else:
+        #     node.delete()
+        #     self.length -= 1
+        # self.add_to_head(node.value)
 
     def move_to_end(self, node):
         if self.length < 1:
