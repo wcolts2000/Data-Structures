@@ -8,6 +8,9 @@ class ListNode:
         self.prev = prev
         self.next = next
 
+    def __str__(self):
+        return f'value: {self.value}, next: {self.next}, prev: {self.prev}'
+
     """Wrap the given value in a ListNode and insert it
   after this node. Note that this node could already
   have a next node it is point to."""
@@ -47,6 +50,9 @@ class DoublyLinkedList:
         self.head = node
         self.tail = node
         self.length = 1 if node is not None else 0
+
+    def __str__(self):
+        return f'head: {self.head}, tail: {self.tail}, length: {self.length}'
 
     def __len__(self):
         return self.length
@@ -152,6 +158,8 @@ class DoublyLinkedList:
             self.tail = None
         if node == self.head:
             self.head = self.head.next
+        if node == self.tail:
+            self.tail = self.tail.prev
         node.delete()
         self.length -= 1
         # if self.length == 1 and node.value == self.head.value:
